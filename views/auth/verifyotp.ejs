@@ -1,0 +1,21 @@
+<h2>Verify Your Email</h2>
+<p>Enter the 6-digit OTP sent to your email: <%= email %></p>
+<form action="/auth/verify-otp" method="POST">
+  <input type="text" name="otp" placeholder="Enter OTP" required />
+  <button type="submit">Verify</button>
+  <% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+  <% } %>
+</form>
+<form action="/auth/resend-otp" method="POST" style="margin-top: 10px;">
+    <input type="hidden" name="email" value="<%= email %>">
+    <button type="submit">Resend OTP</button>
+  </form>
+  
+  <% if (resendSuccess) { %>
+    <p style="color:green;"><%= resendSuccess %></p>
+  <% } %>
+  <% if (resendError) { %>
+    <p style="color:red;"><%= resendError %></p>
+  <% } %>
+  
